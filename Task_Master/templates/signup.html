@@ -1,0 +1,45 @@
+
+{% extends "base.html" %}
+
+{% block content%}
+
+    <div>
+
+        <div class="slide_right">
+
+            <h1>Create a Library Account</h1>
+
+            <form name="signup_form">
+
+                <label for="name">Name</label>
+                <br>
+                <input type="text" name="name" required>
+                <br>
+                <br>
+
+                <label for="email">Email</label>
+                <br>
+                <input type="email" name="email" required>
+                <br>
+                <br>
+
+                <label for="password">Password</label>
+                <br>
+                <input type="password" name="password" required>
+                <br>
+                <br>
+
+                <input type="submit" value="Sign Up">
+                <br>
+                <br>
+
+                <p class="error error--hidden"></p>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+{% endblock %}

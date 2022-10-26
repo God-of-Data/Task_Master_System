@@ -1,0 +1,97 @@
+
+{% extends "base.html" %}
+
+{% block content%}
+
+<div class="slide_right">
+
+    <h1>User Dashboard</h1>
+    
+    <p>You are logged in.</p>
+
+    
+    <div>
+	
+        <a href="/user/signout_action/" type="submit">Sign Out</a>
+		
+    </div>
+
+    <div>
+
+        <h2>Your Info:</h2>
+
+        <p>
+
+            <strong>Name:</strong> {{ session["user"]["name"] }} 
+            <br>
+
+            <strong>Email:</strong> {{ session["user"]["email"] }} 
+            <br>
+
+        </p>
+
+    </div>
+
+
+    <div>
+
+         <h2>Your Tasks:</h2>
+    
+        {% if tasks|length < 1 %}
+    
+            <div>
+
+                <h4>There are no tasks. You can create one below.</h4>
+
+            </div>
+        
+        {% else %}
+
+            <table>
+                
+                <tr>
+
+                    <th>Task</th>
+                    <th>Actions</th>
+
+                </tr>
+
+                {% for task in tasks %}
+
+                    <tr>
+
+                        <td>{{ task.content }}</td>
+                        <td>
+
+                            <a href="/tasks/user/delete/{{task._id}}">Delete</a>
+
+                        </td>
+
+                    </tr>
+
+                {% endfor %}
+
+            </table>
+
+        {% endif %}
+
+        <br>
+
+        <div>
+
+            <form action="/tasks/user/add/" method="POST">
+
+                <input type="text" name="content" id="content">
+                <input type="submit" value="Add Task">
+
+            </form>
+
+        </div>
+
+        <br>
+    
+    </div>
+
+</div>
+
+{% endblock %}
